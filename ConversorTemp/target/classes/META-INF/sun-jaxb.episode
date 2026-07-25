@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v4.0.5 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2026.07.24 a las 09:50:58 PM CST
+  -->
+  <bindings scd="x-schema::tns" if-exists="true" auto-acknowledge="true" xmlns:tns="http://umg.com/compiladores/temperatura">
+    <schemaBindings map="false">
+      <package name="com.umg.proyecto.soap.generated"/>
+    </schemaBindings>
+    <bindings scd="tns:convertirTemperaturaRequest" if-exists="true" auto-acknowledge="true">
+      <class ref="com.umg.proyecto.soap.generated.ConvertirTemperaturaRequest"/>
+    </bindings>
+    <bindings scd="tns:convertirTemperaturaResponse" if-exists="true" auto-acknowledge="true">
+      <class ref="com.umg.proyecto.soap.generated.ConvertirTemperaturaResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

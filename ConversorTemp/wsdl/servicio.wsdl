@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://umg.com/compiladores/temperatura" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://umg.com/compiladores/temperatura" targetNamespace="http://umg.com/compiladores/temperatura">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://umg.com/compiladores/temperatura">
+            <!-- Petición: el cliente envía un valor en Celsius -->
+            <xs:element name="convertirTemperaturaRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="celsius" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Respuesta: el servidor devuelve el valor convertido a Fahrenheit -->
+            <xs:element name="convertirTemperaturaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="celsius" type="xs:double"/>
+                        <xs:element name="fahrenheit" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="convertirTemperaturaRequest">
+        <wsdl:part element="tns:convertirTemperaturaRequest" name="convertirTemperaturaRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="convertirTemperaturaResponse">
+        <wsdl:part element="tns:convertirTemperaturaResponse" name="convertirTemperaturaResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="TemperaturaPort">
+        <wsdl:operation name="convertirTemperatura">
+            <wsdl:input message="tns:convertirTemperaturaRequest" name="convertirTemperaturaRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:convertirTemperaturaResponse" name="convertirTemperaturaResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TemperaturaPortSoap11" type="tns:TemperaturaPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="convertirTemperatura">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="convertirTemperaturaRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="convertirTemperaturaResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TemperaturaPortService">
+        <wsdl:port binding="tns:TemperaturaPortSoap11" name="TemperaturaPortSoap11">
+            <soap:address location="http://localhost:8080/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
